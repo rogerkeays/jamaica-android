@@ -9,6 +9,7 @@ import static android.widget.LinearLayout.HORIZONTAL;
 import jamaica.android.R;
 import static jamaica.android.actions.open_url.open_url;
 import jamaica.android.builders.ImageViewBuilder;
+import static jamaica.android.style.get_padding.get_padding;
 import jamaica.core.testing.TestGrouper.UILayer;
 
 public class FollowMeView extends LinearLayout implements UILayer {
@@ -21,29 +22,35 @@ public class FollowMeView extends LinearLayout implements UILayer {
     public FollowMeView(Context android) {
         super(android);
         setOrientation(HORIZONTAL);
+        int p = get_padding(android);
         facebook_button = new ImageViewBuilder(android)
             .image(R.drawable.ic_social_facebook)
             .visibility(GONE)
+            .padding(p, p, 0, p)
             .create();
 
         twitter_button = new ImageViewBuilder(android)
             .image(R.drawable.ic_social_twitter)
             .visibility(GONE)
+            .padding(p, p, 0, p)
             .create();
 
         google_plus_button = new ImageViewBuilder(android)
             .image(R.drawable.ic_social_google_plus)
             .visibility(GONE)
+            .padding(p, p, 0, p)
             .create();
 
         instagram_button = new ImageViewBuilder(android)
             .image(R.drawable.ic_social_instagram)
             .visibility(GONE)
+            .padding(p, p, 0, p)
             .create();
 
         youtube_button = new ImageViewBuilder(android)
             .image(R.drawable.ic_social_youtube)
             .visibility(GONE)
+            .padding(p, p, 0, p)
             .create();
 
         addView(facebook_button);
