@@ -12,7 +12,8 @@ public class create_preference_link implements UILayer {
 
     /**
      * Create a PreferenceScreen object that acts as a link with the given
-     * title, summary, and icon. The icon may be omitted.
+     * title, summary, and icon. The icon may be omitted. If the title
+     * resource is 0, no title is added.
      */
     public static Preference create_preference_link(
                 PreferenceScreen root, String url,
@@ -22,7 +23,9 @@ public class create_preference_link implements UILayer {
         IconPreference link = new IconPreference(root.getContext());
         link.setIntent(new Intent().setAction(Intent.ACTION_VIEW)
                 .setData(Uri.parse(url)));
-        link.setTitle(title_resource);
+        if (title_resource != 0) {
+            link.setTitle(title_resource);
+        }
         link.setSummary(summary_resource);
         if (icon_resource != null) {
             link.setIcon(icon_resource);
