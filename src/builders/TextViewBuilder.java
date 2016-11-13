@@ -4,9 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.widget.TextView;
-import static jamaica.android.style.get_padding.get_padding;
-import static jamaica.android.style.get_text_size.get_text_size;
-import static jamaica.android.style.get_small_text_size.get_small_text_size;
+import static jamaica.android.functions.ui.*;
 
 public class TextViewBuilder extends ViewBuilder<TextView> {
     public TextViewBuilder(Context context) {

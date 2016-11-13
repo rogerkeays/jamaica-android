@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import static jamaica.android.style.get_padding.get_padding;
+import static jamaica.android.functions.ui.*;
 
 public class ButtonBuilder extends ViewBuilder<Button> {
     public ButtonBuilder(Context context) {

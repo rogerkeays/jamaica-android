@@ -1,9 +1,9 @@
 package jamaica.android.builders;
 
 import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import android.widget.LinearLayout;
 
 public class CommonLayoutParams {
 

@@ -2,14 +2,12 @@ package jamaica.android.widgets;
 
 import android.content.Context;
 import android.preference.Preference;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.LinearLayout.LayoutParams;
-import jamaica.android.builders.LinearLayoutBuilder;
-import jamaica.android.builders.ImageViewBuilder;
-import static jamaica.android.style.convert_dips_to_px.convert_dips_to_px;
-import static jamaica.android.style.get_padding.get_padding;
+import jamaica.android.builders.*;
 import jamaica.core.testing.TestGrouper.UILayer;
+import static jamaica.android.functions.ui.*;
+
 
 /**
  * A Preference widget which supports icon display. This is just for

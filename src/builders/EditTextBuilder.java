@@ -4,8 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.view.Gravity;
 import android.widget.EditText;
-import static jamaica.android.style.get_padding.get_padding;
-import static jamaica.android.style.get_text_size.get_text_size;
+import static jamaica.android.functions.ui.*;
 
 public class EditTextBuilder extends ViewBuilder<EditText> {
     public EditTextBuilder(Context context) {

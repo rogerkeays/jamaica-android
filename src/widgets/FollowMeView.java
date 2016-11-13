@@ -2,15 +2,14 @@ package jamaica.android.widgets;
 
 import android.content.Context;
 import android.widget.LinearLayout;
+import android.widget.ImageView;
+import jamaica.android.R;
+import jamaica.android.builders.ImageViewBuilder;
+import jamaica.core.testing.TestGrouper.UILayer;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import android.widget.ImageView;
 import static android.widget.LinearLayout.HORIZONTAL;
-import jamaica.android.R;
-import static jamaica.android.actions.open_url.open_url;
-import jamaica.android.builders.ImageViewBuilder;
-import static jamaica.android.style.get_padding.get_padding;
-import jamaica.core.testing.TestGrouper.UILayer;
+import static jamaica.android.functions.ui.*;
 
 public class FollowMeView extends LinearLayout implements UILayer {
     

@@ -1,10 +1,10 @@
 package jamaica.android.widgets;
 
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import jamaica.android.builders.TextViewBuilder;
-import static jamaica.android.style.get_padding.get_padding;
+import android.content.*;
+import android.widget.*;
+import jamaica.android.builders.*;
+import static jamaica.android.functions.ui.*;
+
 
 /**
  * A widget which allows the user to select a rating from 1 to 5 stars. Use
