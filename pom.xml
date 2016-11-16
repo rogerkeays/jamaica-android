@@ -39,6 +39,7 @@
       <scope>compile</scope>
       <type>apklib</type>
     </dependency>
+    <!--
     <dependency>
       <groupId>au.com.ninthavenue.patterns</groupId>
       <artifactId>android</artifactId>
@@ -46,6 +47,7 @@
       <scope>compile</scope>
       <type>aar</type>
     </dependency>
+    -->
 
 
     <!-- test -->
