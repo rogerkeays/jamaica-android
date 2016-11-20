@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="line_number">Line {0}: </string>
   <string name="missing_fields_exception">Missing fields: expected {0}, found {1}</string>
   <string name="number_format_parse_exception">Invalid amount: {0}</string>
   <string name="parse_exception">Invalid format: {0}</string>
