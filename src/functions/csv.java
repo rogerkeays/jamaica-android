@@ -1,10 +1,16 @@
 package jamaica.android.functions;
 
+import android.app.*;
 import android.content.*;
+import android.view.*;
+import android.util.*;
+import android.widget.*;
 import jamaica.android.R;
+import jamaica.android.dialogs.*;
 import jamaica.core.exceptions.*;
 import jamaica.core.types.*;
 import jamaica.core.interfaces.*;
+import java.io.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -37,7 +43,7 @@ public class csv {
         return default_format_parse_errors(context, errors, null);
     }
     public static String default_format_parse_errors(Context context, ExceptionTuples errors,
-            BiFunction<Context, Exception, String> localisation_function) {
+            BiFunction<Context, Throwable, String> localisation_function) {
         final StringBuilder result = new StringBuilder();
         for (Tuple<Exception, Integer> tuple : errors.list) {
             result.append(format(context.getString(R.string.line_number), tuple.two))
@@ -63,11 +69,11 @@ public class csv {
         assertEquals("java.lang.NullPointerException: null", 
             default_localise_parse_exception(create_test_context(), new NullPointerException(), e -> null));
     }
-    public static String default_localise_parse_exception(Context context, Exception e) {
+    public static String default_localise_parse_exception(Context context, Throwable e) {
         return default_localise_parse_exception(context, e, null);
     }
-    public static String default_localise_parse_exception(Context context, Exception e, 
-            Function<Exception, String> fallback_function) {
+    public static String default_localise_parse_exception(Context context, Throwable e, 
+            Function<Throwable, String> fallback_function) {
         if (e instanceof NumberFormatException) {
             return format(context.getString(R.string.number_format_parse_exception), e.getMessage());
         } else if (e instanceof MissingFieldsException) {
@@ -80,5 +86,41 @@ public class csv {
         } else {
             return e.getClass().getName() + ": " + e.getMessage();
         }
+    }
+
+
+    // handle_import_dialog
+    public static boolean handle_import_dialog(
+                Context context,
+                Consumer<File> import_function,
+                Function<ExceptionTuples, String> error_formatting_function) {
+
+        new FileChooser(context).setFileListener(file -> {
+            new AlertDialog.Builder(context)
+                .setTitle(R.string.import_label)
+                .setMessage(format(context.getString(R.string.import_confirm), file.getName()))
+                .setPositiveButton(android.R.string.ok, (d, id) -> {
+                    final Toast toast = Toast.makeText(context, "", Toast.LENGTH_LONG);
+                    new ProgressTask(context, context.getString(R.string.import_label)) {
+                         @Override protected void doTask() {
+                            try {
+                                import_function.accept(file);
+                            } catch (Exception e) {
+                                Log.e("handle_import_dialog", "import failed", e);
+                                Throwable x = get_root_cause(e);
+                                toast.setText(context.getString(R.string.import_error) + 
+                                    (x instanceof ExceptionTuples ? 
+                                    error_formatting_function.apply((ExceptionTuples) x) : 
+                                    default_localise_parse_exception(context, x)));
+                                toast.show();
+                            }
+                         }
+                    }.execute();
+                })
+                .setNegativeButton(android.R.string.cancel, (dialog, id) -> dialog.cancel())
+                .create()
+                .show();
+        }).showDialog();
+        return true;
     }
 }
