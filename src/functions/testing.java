@@ -17,10 +17,10 @@ public class testing {
 
     // create_test_database
     @Test public void create_test_database__returns_an_open_sqlite_database() {
-        assert_that(create_test_database().isOpen());
+        assert_true(create_test_database().isOpen());
     }
     @Test public void create_test_database__can_be_called_multiple_times() {
-        assert_that(!create_test_database().getPath()
+        assert_true(!create_test_database().getPath()
                 .equals(create_test_database().getPath()));
     }
     public static SQLiteDatabase create_test_database() {
