@@ -5,7 +5,6 @@ import android.preference.Preference;
 import android.view.*;
 import android.widget.LinearLayout.LayoutParams;
 import jamaica.android.builders.*;
-import jamaica.core.testing.TestGrouper.UILayer;
 import static jamaica.android.functions.ui.*;
 
 
@@ -14,7 +13,7 @@ import static jamaica.android.functions.ui.*;
  * backwards compatability with Android 2.2. Android 3.0 added a
  * setIcon() method to the Preference class;
  */
-public class IconPreference extends Preference implements UILayer {
+public class IconPreference extends Preference {
 
     private Integer icon_resource = null;
     public void setIcon(int icon_resource) {

@@ -6,7 +6,6 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.content.Intent;
 import jamaica.android.widgets.IconPreference;
-import jamaica.core.testing.TestGrouper.UILayer;
 
 public class widgets {
 

@@ -13,6 +13,7 @@ import jamaica.core.interfaces.*;
 import java.io.*;
 import org.junit.Test;
 import static jamaica.android.functions.testing.*;
+import static jamaica.core.functions.csv.*;
 import static jamaica.core.functions.exceptions.*;
 import static jamaica.core.functions.lang.*;
 import static java.text.MessageFormat.*;
@@ -35,7 +36,7 @@ public class dialogs {
     public static boolean show_import_dialog(
                 Activity context,
                 Consumer<File> import_function,
-                Function<ExceptionTuples, String> error_formatting_function) {
+                Function<LineExceptions, String> error_formatting_function) {
 
         new FileChooser(context).setFileListener(file -> {
             new AlertDialog.Builder(context)
@@ -52,8 +53,8 @@ public class dialogs {
                             } catch (Exception e) {
                                 Throwable x = get_root_cause(e);
                                 show_error_dialog(context, R.string.import_failed,
-                                    x instanceof ExceptionTuples ? 
-                                    error_formatting_function.apply((ExceptionTuples) x) : 
+                                    x instanceof LineExceptions ? 
+                                    error_formatting_function.apply((LineExceptions) x) : 
                                     localise_exception(x));
                             }
                          }

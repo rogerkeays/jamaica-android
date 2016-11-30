@@ -5,13 +5,12 @@ import android.widget.LinearLayout;
 import android.widget.ImageView;
 import jamaica.android.R;
 import jamaica.android.builders.ImageViewBuilder;
-import jamaica.core.testing.TestGrouper.UILayer;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static android.widget.LinearLayout.HORIZONTAL;
 import static jamaica.android.functions.ui.*;
 
-public class FollowMeView extends LinearLayout implements UILayer {
+public class FollowMeView extends LinearLayout {
     
     // references to the components
     ImageView facebook_button, twitter_button, google_plus_button,
