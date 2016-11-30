@@ -20,9 +20,20 @@ import static org.junit.Assert.*;
 
 public class dialogs {
 
-    // handle_import_dialog
-    public static boolean handle_import_dialog(
-                Context context,
+    // show_error_dialog
+    public static void show_error_dialog(Activity context, int title_resource, String message) {
+        context.runOnUiThread(() -> 
+            new AlertDialog.Builder(context)
+                    .setTitle(title_resource)
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok, (dialog, id) -> dialog.cancel())
+                    .show());
+    }
+
+
+    // show_import_dialog
+    public static boolean show_import_dialog(
+                Activity context,
                 Consumer<File> import_function,
                 Function<ExceptionTuples, String> error_formatting_function) {
 
@@ -37,15 +48,14 @@ public class dialogs {
                             try {
                                 import_function.accept(file);
                                 toast.setText(R.string.import_successful);
+                                toast.show();
                             } catch (Exception e) {
-                                Log.e("handle_import_dialog", "import failed", e);
                                 Throwable x = get_root_cause(e);
-                                toast.setText(context.getString(R.string.import_error) + 
-                                    (x instanceof ExceptionTuples ? 
+                                show_error_dialog(context, R.string.import_failed,
+                                    x instanceof ExceptionTuples ? 
                                     error_formatting_function.apply((ExceptionTuples) x) : 
-                                    localise_exception(x)));
+                                    localise_exception(x));
                             }
-                            toast.show();
                          }
                     }.execute();
                 })
