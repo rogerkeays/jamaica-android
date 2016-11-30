@@ -33,10 +33,11 @@ public class dialogs {
 
 
     // show_import_dialog
-    public static boolean show_import_dialog(
-                Activity context,
-                Consumer<File> import_function,
-                Function<LineExceptions, String> error_formatting_function) {
+    public static boolean show_import_dialog(Activity context, Consumer<File> import_function) {
+        return show_import_dialog(context, import_function, null);
+    }
+    public static boolean show_import_dialog(Activity context, Consumer<File> import_function,
+                Function<Throwable, String> exception_localisation_function) {
 
         new FileChooser(context).setFileListener(file -> {
             new AlertDialog.Builder(context)
@@ -54,7 +55,7 @@ public class dialogs {
                                 Throwable x = get_root_cause(e);
                                 show_error_dialog(context, R.string.import_failed,
                                     x instanceof LineExceptions ? 
-                                    error_formatting_function.apply((LineExceptions) x) : 
+                                    format_line_errors((LineExceptions) x, exception_localisation_function) :
                                     localise_exception(x));
                             }
                          }
