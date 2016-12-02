@@ -6,8 +6,8 @@ import org.junit.*;
 import org.junit.runner.*;
 import org.robolectric.*;
 import static jamaica.android.functions.testing.*;
-import static jamaica.core.functions.lang.*;
-import static jamaica.core.functions.testing.*;
+import static jamaica.core.lang.*;
+import static jamaica.core.testing.*;
 
 @RunWith(RobolectricTestRunner.class)
 public class sql {

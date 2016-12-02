@@ -5,7 +5,7 @@ import android.database.sqlite.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.robolectric.*;
-import static jamaica.core.functions.testing.*;
+import static jamaica.core.testing.*;
 
 @RunWith(RobolectricTestRunner.class)
 public class testing {

@@ -7,15 +7,12 @@ import android.util.*;
 import android.widget.*;
 import jamaica.android.R;
 import jamaica.android.dialogs.*;
-import jamaica.core.exceptions.*;
-import jamaica.core.types.*;
-import jamaica.core.interfaces.*;
 import java.io.*;
 import org.junit.Test;
 import static jamaica.android.functions.testing.*;
-import static jamaica.core.functions.csv.*;
-import static jamaica.core.functions.exceptions.*;
-import static jamaica.core.functions.lang.*;
+import static jamaica.core.csv.*;
+import static jamaica.core.lang.*;
+import static jamaica.core.i18n.*;
 import static java.text.MessageFormat.*;
 import static org.junit.Assert.*;
 
